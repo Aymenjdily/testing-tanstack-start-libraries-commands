@@ -21,8 +21,6 @@ const Navbar = () => {
   const navShadow = useTransform(scrollY, [0, 100], ['0 0px 0px rgba(0,0,0,0)', '0 4px 20px rgba(0,0,0,0.08)'])
 
   const links = [
-    { href: '/libraries', label: 'Libraries' },
-    { href: '/docs', label: 'Documentation' },
     { href: '/blog', label: 'Blog' },
     { href: '/pricing', label: 'Pricing' },
   ]
@@ -30,7 +28,7 @@ const Navbar = () => {
   return (
     <motion.header
       style={{ backgroundColor: navBackground, boxShadow: navShadow }}
-      className="fixed top-0 left-0 right-0 z-50 border-b border-border/40 backdrop-blur supports-[backdrop-filter]:bg-background/60 pointer-events-auto"
+      className="fixed top-0 left-0 right-0 z-50 border-b border-primary/10 bg-background/80 backdrop-blur-xl pointer-events-auto"
     >
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div className="flex h-16 items-center justify-between">
@@ -59,22 +57,17 @@ const Navbar = () => {
               <span className="text-lg font-bold tracking-tight">Skilled Library</span>
             </a>
 
-            <nav className="hidden items-center gap-6 md:flex">
+            <nav className="hidden items-center gap-1 md:flex">
               {links.map((link) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  className="relative text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                  whileHover={{ y: -2 }}
+                  className="relative px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  whileHover={{ y: -1 }}
                   transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                 >
                   {link.label}
-                  <motion.span
-                    className="absolute -bottom-1 left-0 h-0.5 bg-primary rounded-full"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-                  />
+                  <span className="absolute inset-x-1 -bottom-0.5 h-px bg-primary scale-x-0 transition-transform origin-left hover:scale-x-100" />
                 </motion.a>
               ))}
             </nav>
@@ -83,19 +76,13 @@ const Navbar = () => {
           <div className="hidden items-center gap-3 md:flex">
             <motion.a
               href="/sign-in"
-              className="inline-flex h-9 items-center justify-center rounded-lg border border-border bg-background px-4 text-sm font-medium text-foreground transition-all hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              className="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-background px-5 text-sm font-medium text-foreground transition-all hover:bg-accent hover:text-accent-foreground hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Sign in
             </motion.a>
             <motion.a
               href="/get-started"
-              className="inline-flex h-9 items-center justify-center rounded-lg bg-primary px-4 text-sm font-medium text-white shadow-sm transition-all hover:bg-primary/90 hover:shadow-md hover:translate-y-[-0.5px] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95, y: 0 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              className="inline-flex h-10 items-center justify-center rounded-xl bg-primary px-5 text-sm font-medium text-white shadow-md shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               Get Started
             </motion.a>
@@ -105,9 +92,6 @@ const Navbar = () => {
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             className="inline-flex items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground md:hidden pointer-events-auto"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 20 }}
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </motion.button>
@@ -128,7 +112,7 @@ const Navbar = () => {
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                  className="relative px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05, duration: 0.2 }}
@@ -140,21 +124,19 @@ const Navbar = () => {
             <div className="mt-4 flex flex-col gap-2 border-t border-border/40 pt-4">
               <motion.a
                 href="/sign-in"
-                className="inline-flex h-9 items-center justify-center rounded-lg border border-border bg-background px-4 text-sm font-medium text-foreground transition-all hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-background px-5 text-sm font-medium text-foreground transition-all hover:bg-accent hover:text-accent-foreground hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.2 }}
-                whileTap={{ scale: 0.95 }}
               >
                 Sign in
               </motion.a>
               <motion.a
                 href="/get-started"
-                className="inline-flex h-9 items-center justify-center rounded-lg bg-primary px-4 text-sm font-medium text-white shadow-sm transition-all hover:bg-primary/90 hover:shadow-md active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="inline-flex h-10 items-center justify-center rounded-xl bg-primary px-5 text-sm font-medium text-white shadow-md shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.25, duration: 0.2 }}
-                whileTap={{ scale: 0.95 }}
               >
                 Get Started
               </motion.a>
