@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import HeaderUser from '#/integrations/clerk/header-user'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -74,18 +75,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden items-center gap-3 md:flex">
-            <motion.a
-              href="/sign-in"
-              className="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-background px-5 text-sm font-medium text-foreground transition-all hover:bg-accent hover:text-accent-foreground hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              Sign in
-            </motion.a>
-            <motion.a
-              href="/get-started"
-              className="inline-flex h-10 items-center justify-center rounded-xl bg-primary px-5 text-sm font-medium text-white shadow-md shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              Get Started
-            </motion.a>
+            <HeaderUser />
           </div>
 
           <motion.button
@@ -122,24 +112,7 @@ const Navbar = () => {
               ))}
             </nav>
             <div className="mt-4 flex flex-col gap-2 border-t border-border/40 pt-4">
-              <motion.a
-                href="/sign-in"
-                className="inline-flex h-10 items-center justify-center rounded-xl border border-border bg-background px-5 text-sm font-medium text-foreground transition-all hover:bg-accent hover:text-accent-foreground hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2, duration: 0.2 }}
-              >
-                Sign in
-              </motion.a>
-              <motion.a
-                href="/get-started"
-                className="inline-flex h-10 items-center justify-center rounded-xl bg-primary px-5 text-sm font-medium text-white shadow-md shadow-primary/20 transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.25, duration: 0.2 }}
-              >
-                Get Started
-              </motion.a>
+              <HeaderUser />
             </div>
           </div>
         </motion.div>

@@ -5,5 +5,11 @@ export default function AppClerkProvider({
 }: {
   children: React.ReactNode
 }) {
-  return <ClerkProvider>{children}</ClerkProvider>
+  return (
+    <ClerkProvider
+      publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}
+    >
+      {children}
+    </ClerkProvider>
+  )
 }
